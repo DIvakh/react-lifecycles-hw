@@ -1,0 +1,11 @@
+.post {
+  width: calc(100% / 4 - 35px);
+
+  padding: 10px;
+  border-radius: 5px;
+  backdrop-filter: brightness(1) contrast(0.95);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.192);
+}
+.post h3 {
+  text-align: center;
+}
