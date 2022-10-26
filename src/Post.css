@@ -1,11 +1,82 @@
+* {
+  box-sizing: border-box;
+}
+
 .post {
   width: calc(100% / 4 - 35px);
 
   padding: 10px;
+  padding-bottom: 100px;
   border-radius: 5px;
   backdrop-filter: brightness(1) contrast(0.95);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.192);
+  position: relative;
 }
 .post h3 {
   text-align: center;
+}
+
+.post .fa-trash {
+  text-align: center;
+  margin-top: 20px;
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.post .fa-trash:hover {
+  color: #959ca3;
+}
+.post .fa-trash:hover span {
+  visibility: visible;
+}
+.post .fa-trash span {
+  color: #d5dfe9;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 200;
+  font-size: 1.1rem;
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  visibility: hidden;
+}
+button {
+  display: block;
+  background: transparent;
+  color: inherit;
+  border: none;
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+button:hover {
+  text-decoration: underline;
+}
+
+textarea {
+  margin: 1em 0;
+  width: 100%;
+  overflow: hidden;
+  min-height: 80px;
+  max-height: 200px;
+  resize: none;
+  background-color: inherit;
+  color: inherit;
+}
+
+form p {
+  margin-bottom: 0;
+  font-size: 1.15rem;
+}
+
+form textarea:nth-of-type(2) {
+  min-height: 150px;
 }
