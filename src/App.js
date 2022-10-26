@@ -3,13 +3,10 @@ import './App.css';
 import Post from './components/Post';
 
 class App extends React.Component {
+  state = { posts: [] };
+
   async componentDidMount() {
     this.getPosts();
-  }
-
-  constructor(props) {
-    super(props);
-    this.state = { posts: [] };
   }
 
   getPosts = async () => {
