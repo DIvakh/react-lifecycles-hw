@@ -1,9 +1,10 @@
 import React from 'react';
-import './App.css';
 import Post from './components/Post';
+import Message from './components/Message';
+import './App.css';
 
 class App extends React.Component {
-  state = { posts: [] };
+  state = { posts: [], isMessageShown: false, message: '' };
 
   async componentDidMount() {
     this.getPosts();
@@ -54,25 +55,47 @@ class App extends React.Component {
             post.id === id ? { ...post, title: newTitle, body: newBody } : post
           )
         });
+      this.showMessage(id, 'edited');
     } catch (e) {
       console.error(e);
     }
   };
 
+  showMessage = (id, action) => {
+    this.setState({
+      isMessageShown: true,
+      message: `Post with id: ${id} ${action} successfully!`
+    });
+  };
+  hideMessage = () => {
+    this.setState({ isMessageShown: false });
+  };
+
   render() {
     return (
-      <div className='container'>
-        {this.state.posts.map((el) => {
-          return (
-            <Post
-              deletePost={this.deletePost}
-              editPost={this.editPost}
-              key={el.id}
-              post={el}
-            />
-          );
-        })}
-      </div>
+      <section>
+        {this.state.isMessageShown ? (
+          <Message
+            hideMessage={this.hideMessage}
+            messageText={this.state.message}
+          />
+        ) : (
+          ''
+        )}
+        <div className='container'>
+          {this.state.posts.map((el) => {
+            return (
+              <Post
+                deletePost={this.deletePost}
+                editPost={this.editPost}
+                showMessage={this.showMessage}
+                key={el.id}
+                post={el}
+              />
+            );
+          })}
+        </div>
+      </section>
     );
   }
 }

@@ -44,7 +44,7 @@
   transform: translateX(-50%);
   visibility: hidden;
 }
-button {
+button.edit {
   display: block;
   background: transparent;
   color: inherit;
@@ -57,7 +57,7 @@ button {
   cursor: pointer;
   transition: all 0.3s ease;
 }
-button:hover {
+button.edit:hover {
   text-decoration: underline;
 }
 

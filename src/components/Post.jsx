@@ -1,9 +1,13 @@
 import React, { PureComponent } from 'react';
-import '../Post.css';
+
+import '../post.css';
 
 class PostList extends PureComponent {
   state = { isEdit: false, newTitle: '', newBody: '' };
-  async componentDidMount() {}
+
+  componentWillUnmount() {
+    this.props.showMessage(this.props.post.id, 'deleted');
+  }
 
   editPost = (e) => {
     if (e.target.dataset.name === 'title') {
@@ -20,6 +24,7 @@ class PostList extends PureComponent {
           <h3>{this.props.post.title}</h3>
           <div>{this.props.post.body}</div>
           <button
+            className='edit'
             onClick={() => {
               this.setState({ isEdit: true });
             }}
@@ -54,6 +59,7 @@ class PostList extends PureComponent {
           />
 
           <button
+            className='edit'
             onClick={(e) => {
               e.preventDefault();
               this.props.editPost(
